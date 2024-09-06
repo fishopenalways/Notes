@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include "hash.h"
 
-#define ok 0
-#define error 1
 #define ignore_param(x) ((x) = (x))
 
-static int *g_u32pHashArr;
+static u32 *g_u32pHashArr;
+static u32 g_HashArrLen;
+static u32 hashcode(u32 item);
 
 u32 hash_init(u32 len)
 {
-    u32 res = ok;
     int *hash_arr = (int *)calloc(len, sizeof(u32));
     if(NULL == hash_arr)
     {
@@ -18,6 +17,7 @@ u32 hash_init(u32 len)
         return error;
     }
     g_u32pHashArr = hash_arr;
+    g_HashArrLen = len;
     return ok;
 }
 
@@ -36,8 +36,8 @@ void hash_fini()
 
 void hash_add_item(u32 num)
 {
-    //todo
-    ignore_param(num);
+    u32 key = hashcode(num);
+    
     return;
 }
 
@@ -50,7 +50,11 @@ void hash_del_item(u32 num)
 
 u32 hash_get_item(u32 num)
 {
-    //todo
-    u32 res = num;
-    return res;
+    return ;
+}
+
+static u32 hashcode(u32 item)
+{
+    u32 key = item % g_HashArrLen;
+    return key;
 }

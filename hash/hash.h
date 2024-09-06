@@ -3,6 +3,9 @@
 
 #include "base.h"
 
+#define ok 0
+#define error 1
+
 u32 hash_init(u32 len);
 void hash_add_item(u32 num);
 void hash_del_item(u32 num);

@@ -27,4 +27,10 @@ host的检查，不能超过sockaddr_un结构体中sun_path成员定义的长度
 建立成功或者连接成功，返回socket，否则返回-1<br>
 
 如果type标记了USOCK_UNIX<br>
-usock --> usock_unix --> usock_connect --> usock_set_flags
+usock --> usock_unix --> usock_connect --> usock_set_flags<br>
+
+如果type没有标记USOCK_UNIX<br>
+usock --> [inline]usock_inet --> usock_inet_timeout<br>
+
+struct addrinfo（netdb.h中的结构体）
+ai_family的赋值是?:的嵌套使用，避免繁琐的if-else结构<br>

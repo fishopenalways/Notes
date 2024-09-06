@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "hash.h"
 
 typedef unsigned int u32;
 
@@ -13,5 +14,8 @@ void test1()
 int main()
 {
     test1();
+    unsigned int res = error;
+    res = hash_init(100);
+    printf("res: %u\n", res);
     return 0;
 }
